@@ -38,6 +38,8 @@
         <TextBlock Grid.Column="3" HorizontalAlignment="Center" Grid.Row="3" Text="?" VerticalAlignment="Center" FontSize="36" MouseDown = "TextBlock_MouseDown" />
         <TextBlock x:Name="ScoreText" HorizontalAlignment="Center" Grid.Row="4" Text="SCORE" VerticalAlignment="Top" Margin="0,6,0,0" FontWeight="Bold" FontSize="16"/>
         <TextBlock x:Name="scoreArea" HorizontalAlignment="Center" Grid.Row="4" Text="0" VerticalAlignment="Center" TextAlignment="Center" FontSize="22" Margin="0,0,0,-10"/>
+        <TextBlock x:Name="timeTextBlock" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="4" TextWrapping="Wrap" Text="ElapsedTime" VerticalAlignment="Center" Grid.ColumnSpan="3" FontSize="36" MouseDown="TimeTextBlock_MouseDown"/>
+        <TextBlock Grid.Column="3" HorizontalAlignment="Left" Margin="220,83,0,0" Grid.Row="2" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
