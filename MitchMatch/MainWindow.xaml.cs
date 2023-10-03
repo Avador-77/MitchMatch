@@ -29,6 +29,7 @@ namespace MitchMatch
 
         private void SetUpGame()
         {
+            
             List<string> animalEmoji = new List<string>()
             {
                 "🙊","🙊",
@@ -42,13 +43,47 @@ namespace MitchMatch
             };
             Random random = new Random();
 
-            foreach(TextBlock textBlock in mainGrid.Children.OfType<TextBlock>())
+            foreach (TextBlock textBlock in mainGrid.Children.OfType<TextBlock>())
             {
-                int index = random.Next(animalEmoji.Count);
-                string nextEmoji = animalEmoji[index];
-                textBlock.Text = nextEmoji;
-                animalEmoji.RemoveAt(index);
+                if(animalEmoji.Count > 0)
+                {
+                    int index = random.Next(animalEmoji.Count);
+                    string nextEmoji = animalEmoji[index];
+                    textBlock.Text = nextEmoji;
+                    animalEmoji.RemoveAt(index);
+                }
             }
         }
+
+        TextBlock lastTextBlockClicked;
+        bool findingMatch = false;
+        byte score = 0;
+
+        private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            TextBlock textBlock = sender as TextBlock;
+
+            if(findingMatch == false)
+            {
+                textBlock.Visibility = Visibility.Hidden;
+                lastTextBlockClicked = textBlock;
+                findingMatch = true;
+            }
+            else if(textBlock.Text == lastTextBlockClicked.Text)
+            {
+                score += 10;
+                scoreArea.Text = Convert.ToString(score);
+                textBlock.Visibility = Visibility.Hidden;
+                findingMatch = false;
+
+            }
+            else
+            {
+                lastTextBlockClicked.Visibility = Visibility.Visible;
+                findingMatch = false;
+            }
+        }
+
+        
     }
 }
